@@ -1,0 +1,420 @@
+---
+title: "Parent’s Choice or School’s Choice? Discrimination Against Students in Admission to Private, Charter, and Traditional Public Schools"
+# subtitle: "Parent’s Choice or School’s Choice? "
+author: |
+  Patrick Button<sup>1</sup>, Hussain Hadah<sup>1,2</sup>, Douglas Harris<sup>1</sup>, Barbara Lundebjerg<sup>1</sup>
+  <br>
+  <sup>1</sup>Economics Department, Tulane University, <sup>2</sup>The Murphy Institute
+
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/tulane-fonts.css", "assets/tulane.css"]
+    self_contained: false # if true, fonts will be stored locally
+    seal: true # show a title slide with YAML information
+    includes:
+      in_header: "assets/mathjax-equation-numbers.html"
+    nature:
+      beforeInit: ["assets/remark-zoom.js", "https://platform.twitter.com/widgets.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
+      navigation:
+        scroll: false # disable slide transitions by scrolling
+---
+layout: true
+<div style="position: absolute;left:20px;bottom:5px;color:black;font-size: 12px;">Hussain Hadah (Tulane/Murphy Institute) | Parent’s Choice or School’s Choice?  | `r format(Sys.time(), '%d %B %Y')`</div>
+
+<!--- `r rmarkdown::metadata$subtitle` | `r format(Sys.time(), '%d %B %Y')`-->
+
+---
+
+```{r, load_refs, echo=FALSE, cache=FALSE, message=FALSE}
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           cite.style = 'authoryear', 
+           style = "markdown",
+           hyperlink = FALSE, 
+           dashed = FALSE)
+myBib <- ReadBib("assets/example.bib", check = FALSE)
+top_icon = function(x) {
+  icons::icon_style(
+    icons::fontawesome(x),
+    position = "fixed", top = 10, right = 10
+  )
+}
+```
+
+```{r setup, include=FALSE}
+# xaringanExtra::use_scribble() ## Draw on slides. Requires dev version of xaringanExtra.
+
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center",  
+  fig.height=4, fig.width=6,
+  out.width="748px", out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=F#, echo=F, warning=F, message=F
+  )
+```
+
+
+```{r, cache=FALSE, message=FALSE, warning=FALSE, include=TRUE, eval=TRUE, results=FALSE, echo=FALSE, tidy.opts = list(width.cutoff = 50), tidy = TRUE}
+## Load and install the packages that we'll be using today
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tictoc, parallel, pbapply, future, future.apply, furrr, RhpcBLASctl, memoise, here, foreign, mfx, tidyverse, hrbrthemes, estimatr, ivreg, fixest, sandwich, lmtest, margins, vtable, broom, modelsummary, stargazer, fastDummies, recipes, dummy, gplots, haven, huxtable, kableExtra, gmodels, survey, gtsummary, data.table, tidyfast, dtplyr, microbenchmark, ggpubr, tibble, viridis, wesanderson, censReg, rstatix, srvyr, formatR, sysfonts, showtextdb, showtext, thematic, sampleSelection, RefManageR, DT, googleVis)
+# devtools::install_github("thomasp85/patchwork")
+remotes::install_github("mitchelloharawild/icons")
+remotes::install_github("ROpenSci/bibtex")
+
+# devtools::install_github("ajdamico/lodown")
+## My preferred ggplot2 plotting theme (optional)
+## https://github.com/hrbrmstr/hrbrthemes
+# scale_fill_ipsum()
+# scale_color_ipsum()
+font_add_google("Fira Sans", "firasans")
+font_add_google("Fira Code", "firasans")
+
+showtext_auto()
+
+theme_customs <- theme(
+  text = element_text(family = 'firasans', size = 16),
+  plot.title.position = 'plot',
+  plot.title = element_text(
+    face = 'bold', 
+    colour = thematic::okabe_ito(8)[6],
+    margin = margin(t = 2, r = 0, b = 7, l = 0, unit = "mm")
+  ),
+)
+
+colors <-  thematic::okabe_ito(5)
+
+# theme_set(theme_minimal() + theme_customs)
+theme_set(hrbrthemes::theme_ipsum() + theme_customs)
+## Set master directory where all sub-directories are located
+mdir <- "/Users/hhadah/Dropbox/Research/My Research Data and Ideas/Identification_Paper"
+
+## Set working directories
+workdir  <- paste0(mdir,"/Data/Datasets") # working files and end data
+rawdatadir  <- paste0(mdir,"/Data/Raw")
+tables_plots_dir <- paste0(mdir, "/HTML_tablesAndPlots")
+
+## Set working directory
+
+# COLOR PALLETES
+library(paletteer) 
+# paletteer_d("awtools::a_palette")
+# paletteer_d("suffrager::CarolMan")
+
+### COLOR BLIND PALLETES
+#paletteer_d("colorblindr::OkabeIto")
+#paletteer_d("colorblindr::OkabeIto_black")
+# paletteer_d("colorBlindness::paletteMartin")
+# paletteer_d("colorBlindness::Blue2DarkRed18Steps")
+# paletteer_d("colorBlindness::SteppedSequential5Steps")
+# paletteer_d("colorBlindness::PairedColor12Steps")
+# paletteer_d("colorBlindness::ModifiedSpectralScheme11Steps")
+colorBlindness <- paletteer_d("colorBlindness::Blue2Orange12Steps")
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+# scale_colour_paletteer_d("colorBlindness::ModifiedSpectralScheme11Steps", dynamic = FALSE)
+# To use for fills, add
+  scale_fill_manual(values="colorBlindness::Blue2Orange12Steps")
+
+# To use for line and point colors, add
+  scale_colour_manual(values="colorBlindness::Blue2Orange12Steps")
+  #<a><button>[Click me](#sources)</button></a>
+```
+
+```{css, echo=F}
+    /* Table width = 100% max-width */
+
+    .remark-slide table{
+        width: auto !important; /* Adjusts table width */
+    }
+
+    /* Change the background color to white for shaded rows (even rows) */
+
+    .remark-slide thead, .remark-slide tr:nth-child(2n) {
+        background-color: white;
+    }
+    .remark-slide thead, .remark-slide tr:nth-child(n) {
+        background-color: white;
+    }
+```
+## School Choice Programs are Expanding Rapidly
+
+- #### Universal voucher programs are being implemented in many states, specially red states
+
+  - Private schools can legally discriminate against students except race
+
+  - Even racial discrimination is hard to prove
+
+- #### Charter schools are also expanding
+
+  - Charter schools tend to be small and accountability could create incentives to discriminate
+
+- ### To what extent do these programs discriminate against students is an open question
+
+---
+## We will conduct an audit experiment of all schools in the US
+
+- We will send emails to receive admission information
+
+- We will randomize several characteristics of the students to test for discrimination
+
+  - Race/Ethnicity: Black, Hispanic, White, Arab
+  - LGBTQ+ Status: gay/lesbian vs. presumed straight and transgender vs. presumed cis
+  - Disability Status: ADHD, autism, no disability disclosed
+  - Academic achievement: High vs low
+  - Displine: Disciplinary record vs. no disciplinary record
+  - Socioeconomic Status (SES)/Income: High, middle, low paying jobs
+
+---
+## We contribute to the literature in several ways
+
+- ### We will be the first audit study to test for discrimination in access to education in public, charter, and private schools
+
+  - No previous audit studies included private schools
+
+- ### First study to test for a wide range of characteristics
+
+  - LGBTQ+ and Arab
+
+---
+class: segue-yellow
+background-image: url("assets/TulaneLogo.svg")
+background-size: 20%
+background-position: 95% 95%
+
+# Data
+
+---
+## National Longitudinal School Database (NLSD)
+
+- ### NLSD is a census of all schools in the US
+
+  - Includes all private, charter, and traditional public schools from 1990-2019
+
+- ### We will supplement the NLSD with data about voucher participation, discrimination law (e.g., don't say gay), and political leaning of the state
+
+- ### We will also supplement NLSD with MDR Education’s contact data
+
+---
+class: segue-yellow
+background-image: url("assets/TulaneLogo.svg")
+background-size: 20%
+background-position: 95% 95%
+
+# Study Design
+
+---
+## We will consider many dimensions
+
+.pull-left[
+- ### At least 7 types of schools
+  
+  - Private: Catholic, Protestant, secular, and single-sex
+  - Charter: No-excuses/other, district/other authorizer
+  - Traditional public schools
+]
+
+.pull-right[
+- ### 6 dimensions of potential discrimination
+
+  - Race/ethnicity (Black, Hispanic, White, Arab)
+  - LGBTQ+ status (sexual orientation or transgender status)
+  - Disability status (ADHD, autism, no disability disclosed)
+  - Academic achievement  (high vs. low)
+  - Socioeconomic status (high, middle, low paying jobs)
+]
+
+---
+## Assigning treatment arms
+
+- ### We will assign each school to either the sexual orientation and gender identity treatment arms (65%) or the disability treatment arm (35%)
+
+  - We randomize these separate treatment arms to avoid detection
+  - Signaling SOGI is unusual for younger children
+  - We want to avoid signaling too many uncommon characteristics in the same email
+  - We also want to avoid signals that could complicate the interpretation of the results
+
+---
+## We will use names to signal race and ethnicity
+
+- ### The names have been tested by Gaddis (2022; White, African American, and Hispanic names) and Baert, Lippens & Van Borm (2022; Arab) 
+
+- ### We will assign a different race and ethnicity to each family in our email pairs:
+
+  - Emails assigned to the disability treatment: probabilities 33% White, 23% Black, 23% Hispanic, and 21% Arab
+
+  - Emails assigned to the SOGI treatment: probabilities 40% White, 30% Black, and 30% Hispanic
+
+---
+## Signaling sexual orientation or gender identity
+
+- ### We will only use high school for this treatment arm
+
+- ### When we do signal SOGI, the mother’s email mentions that the child is either gay (20%), lesbian (20%), transgender (15% trans girl, 15% trans boy), or non-binary (10%) by adding
+
+  - "[He/She/They] [is/are] [gay/lesbian/trans], and we are hoping to find a school that is [supportive / LGBT friendly]" 
+  - Mirroring language used in Pfaff et al. (2021) of religious beliefs
+
+---
+## Signaling disability status
+
+- ### For schools assigned to the disability treatment arm we will randomly assign the child to have:
+
+  - Equal probabilities of ADHD  or autism
+  - The remaining emails will not mention a disability
+
+- ### We will add a sentence: 
+
+  - "[She/he] has an IEP for [her/his] ADHD"
+  - "[She/he] is on the spectrum and will need to be taught in a separate classroom"
+
+---
+## Signaling academic achievement, socioeconomic status (SES), and voucher
+
+- ### We will signal academic achievement by mentioning that the child:
+
+  - "typically gets As and Bs"
+  - "typically gets Cs"
+
+- ### We will signal SES by either including or omitting degree information like "MD" or "PhD" in the mother’s email signature
+
+- ### For schools that accept vouchers, we will include signals of voucher eligibility 
+
+---
+## Coding response data
+
+- ### Primary outcome: positive response
+
+  - It will be coded as 1 if the school responds to our email in a way that is helpful (e.g., answers a question) or encouraging within two weeks and 0 otherwise
+
+- ### Secondary outcome: response quality which includes:
+
+  - Wait time to the response
+  - Reply is helpful
+  - Affirming
+  - Polite
+
+
+---
+## Communication with the Schools 
+
+- There is an extensive literature on how to write the emails to the schools (Patrick is the expert)
+
+
+- We will send two emails to school administrators (available in the MDR Education data)
+
+
+- We will randomize the characteristics of the students in the emails to signal our dimensions of interest
+
+
+- The emails will be realistic and will ask for information about the admissions process
+
+  - We will use some of Doug's extensive contacts with educators to ensure the emails are realistic
+
+---
+## Emailing Strategy
+
+- ### We will send two emails to each school
+
+  - One email will be "treatment" (e.g. parent mention their child is transgender) and the other will be "control" (no mention)
+  - We will randomize the order of the emails
+  - Send at least one month apart
+
+- ### Sending two emails substantially increases statistical power
+
+--
+- ### This is the place where we in most need of suggestions
+
+
+---
+class: segue-yellow
+background-image: url("assets/TulaneLogo.svg")
+background-size: 20%
+background-position: 95% 95%
+
+# Statistical Analysis
+
+---
+## Short regression model
+
+We will estimate a linear probability model (LPM) called the "short" model (following Muralidharan, Romero & Wüthrich, 2019):
+
+$$
+\begin{align*}
+PositiveResponse_{i} &= \beta_1 Black_{i} + \beta_2 Hispanic_{i} + \beta_3 Arab_{i} + \beta_4 LGT_i + \beta_5 Disability_i \\
+&+ \beta_6 FemmeName_i + \beta_7 LowGrades_i + \beta_8 HighGrade_i + \beta_9 SESMD_i \\
+&+ \beta_{10} SESPhD_i + EmailCongrols_i \beta_{11} + SchoolControls_i \beta_{12} + \epsilon_i
+\end{align*}
+$$
+
+Where $i$ indexes each email:
+- $PositiveResponse_{i}$ is a binary outcome variable for receiving a positive response
+- $Black_{i}$, $Hispanic_{i}$, and $Arab_{i}$ are indicator variables for race and ethnicity
+- $LGT_i$ is an indicator variable for lesbian, gay, trans, or non-binary students
+- $Disability_i$ is an indicator variable for students with ADHD or autism
+- $FemmeName_i$ is an indicator variable for a feminine name
+
+---
+## Short regression model (continued)
+
+$$
+\begin{align*}
+PositiveResponse_{i} &= \beta_1 Black_{i} + \beta_2 Hispanic_{i} + \beta_3 Arab_{i} + \beta_4 LGT_i + \beta_5 Disability_i \\
+&+ \beta_6 FemmeName_i + \beta_7 LowGrades_i + \beta_8 HighGrade_i + \beta_9 SESMD_i \\
+&+ \beta_{10} SESPhD_i + EmailCongrols_i \beta_{11} + SchoolControls_s \beta_{12} + \epsilon_i
+\end{align*}
+$$
+
+Where $i$ indexes each email and $s$ indexes each school:
+- $LowGrades_i$ and $HighGrades_i$ are indicator variables for low and high academic achievement
+- $SESMD_i$ and $SESPhD_i$ are indicator variables for high socioeconomic status (SES) parents with MD or PhD degrees
+- $EmailControls_i$ includes indicator variables for different randomized email features,  and controls for email timing
+- $SchoolControls_s$ which includes state fixed effects and school characteristics from the NLSD
+
+---
+class: tulane-blue
+background-image: url(assets/TulaneLogo-white.svg)
+background-size: 260px
+background-position: 5% 95%
+
+# Thanks!
+
+.pull-right[.pull-down[
+
+<a href="mailto:hhadah@tulane.edu">
+.white[`r icons::fontawesome("paper-plane")` hhadah@tulane.edu]
+</a>
+
+<a href="https://hussainhadah.com/">
+.white[`r icons::fontawesome("link")` https://hussainhadah.com/]
+</a>
+
+<a href="http://twitter.com/HHeddeh">
+.white[`r icons::fontawesome("twitter")` @HHeddeh]
+</a>
+
+<a href="https://github.com/hhadah">
+.white[`r icons::fontawesome("github")` @hhadah]
+</a>
+
+<br><br><br>
+
+]]
+
+
+```{r gen_pdf, include = FALSE, cache = FALSE, eval = FALSE}
+library(renderthis)
+# https://hhadah.github.io/xaringan/index.html
+
+to_pdf(from = "~/Documents/GiT/jpal-presentation/hadah-jpal-presentation.html", 
+       to = "~/Documents/GiT/jpal-presentation/hadah-jpal-presentation.pdf")
+to_pdf(from = "~/Documents/GiT/jpal-presentation/hadah-jpal-presentation.html")
+```
