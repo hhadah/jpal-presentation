@@ -400,10 +400,6 @@ background-position: 5% 95%
 .white[`r icons::fontawesome("link")` https://hussainhadah.com/]
 </a>
 
-<a href="http://twitter.com/HHeddeh">
-.white[`r icons::fontawesome("twitter")` @HHeddeh]
-</a>
-
 <a href="https://github.com/hhadah">
 .white[`r icons::fontawesome("github")` @hhadah]
 </a>
