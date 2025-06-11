@@ -413,7 +413,7 @@ background-position: 5% 95%
 ]]
 
 
-```{r gen_pdf, include = FALSE, cache = FALSE, eval = FALSE}
+```{r gen_pdf, include = FALSE, cache = FALSE, eval = TRUE}
 library(renderthis)
 # https://hhadah.github.io/jpal-presentation/hadah-jpal-presentation.html
 
