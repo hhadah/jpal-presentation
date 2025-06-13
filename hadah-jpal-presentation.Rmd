@@ -101,9 +101,10 @@ theme_set(hrbrthemes::theme_ipsum() + theme_customs)
 mdir <- "/Users/hhadah/Dropbox/Research/My Research Data and Ideas/Identification_Paper"
 
 ## Set working directories
-workdir  <- paste0(mdir,"/Data/Datasets") # working files and end data
-rawdatadir  <- paste0(mdir,"/Data/Raw")
-tables_plots_dir <- paste0(mdir, "/HTML_tablesAndPlots")
+## Set working directory
+mdir <- "~/Library/CloudStorage/Box-Box/education-audit-study"
+rawdatadir  <- paste0(mdir,"/data/raw")
+datasets  <- paste0(mdir,"/data/datasets")
 
 ## Set working directory
 
@@ -150,48 +151,77 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2"
 ```
 ## School Choice Programs are Expanding Rapidly
 
-- #### Universal voucher programs are being implemented in many states, specially red states
+- #### Education is strongly linked to economic mobility and non-economic benefits .tiny[.gray[*(Chetty et al., 2014, 2016)*]]
 
-  - Private schools can legally discriminate against students except race
+- #### Minoritized groups face significant barriers .tiny[.gray[*(e.g., Bergman & McFarlin, 2020)*]]
 
-  - Even racial discrimination is hard to prove
+- #### While public and charter schools are available to all, there are still inequalities through:
 
-- #### Charter schools are also expanding
+  - .font70[Resource and teacher quality imbalances .tiny[.gray[*(Ferguson, 1991, Johnson, 2019; Soss et al., 2012)*]]]
+  - .font70[Larger class sizes .tiny[.gray[(Boozer & Rouse, 2001)]]]
 
-  - Charter schools tend to be small and accountability could create incentives to discriminate
+--
+- #### Then there are private schools
 
-- ### To what extent do these programs discriminate against students is an open question
+  - .font70[Less affirming of minoritized groups and less accessible]
+  - .font70[They can legally discriminate on any basis except race .tiny[.gray[*(Petrilli, 2017)*]]]
 
 ---
-## We will conduct an audit experiment of all schools in the US
+## American education is undergoing one of its most significant shifts in the last half-century 
+
+- #### 8 states have universal voucher .gray[.tiny[*(EdChoice, 2024)*]]
+
+- #### Some argue that this would expand educational opportunities for low-income families
+
+- #### Some research calls this into question .gray[.tiny[*(Harris, 2018a, forthcoming)*]]
+
+- #### Milton Friedman (1955) popularized vouchers in the wake of Brown v. Board of Education
+
+  - .font60[He tried to sell it knowing that southern states would use it to continue segregation]
+  - .font60[Recent evidence affirms this interpretation .tiny[.gray[*(DeAngelis et al., 2019)*]]]
+
+- #### Voucher expansion aligns with broader discriminatory policy trends (e.g., anti-DEI, anti-CRT, etc.)
+
+--
+- #### .brand-crawfest[To what extent do these programs discriminate against students is an open question]
+
+
+---
+## We will conduct an audit experiment of .brand-crawfest[public], .brand-crawfest[charter], and .brand-crawfest[private] schools in the US
 
 - We will send emails to receive admission information
 
 - We will randomize several characteristics of the students to test for discrimination
 
-  - Race/Ethnicity: Black, Hispanic, White, Arab
-  - LGBTQ+ Status: gay/lesbian vs. presumed straight and transgender vs. presumed cis
-  - Disability Status: ADHD, autism, no disability disclosed
-  - Academic achievement: High vs low
-  - Displine: Disciplinary record vs. no disciplinary record
-  - Socioeconomic Status (SES)/Income: High, middle, low paying jobs
+  - .brand-crawfest[*Race and Ethnicity:*] Black, Hispanic, White, Arab
+  - .brand-crawfest[*LGBTQ+ Status:*] gay/lesbian vs. presumed straight and transgender vs. presumed cis
+  - *Disability Status:* ADHD, autism, no disability disclosed
+  - *Academic achievement:* High vs low
+  - *Socioeconomic Status (SES)/Income:* Ph.D. vs. MD vs. no mention
 
 ---
 ## We contribute to the literature in several ways
 
-- ### We will be the first audit study to test for discrimination in access to education in public, charter, and private schools
+- ##### We will be the first audit study to test for discrimination in access to education in .brand-crawfest[public], .brand-crawfest[charter], and .brand-crawfest[private] schools
+  - .font70[No previous audit studies included private schools]
 
-  - No previous audit studies included private schools
+- ##### First study to test for a wide range of characteristics
+  - .font70[LGBTQ+ and Arab]
 
-- ### First study to test for a wide range of characteristics
+- ##### We will also test how some policies will influence discrimination
+  - .font70[DEI/CRT bans and LGBTQIA+ policies]
 
-  - LGBTQ+ and Arab
+- ##### Determining where discrimination occurs and informing policy to counteract it
+  - .font70[Testing mechanisms (e.g., statistical discrimination, implicit bias)  ]
+  - .font70[Spatial/school-level charachteristics , such as district characteristics, segregation, and social views]
+
 
 ---
 class: segue-yellow
 background-image: url("assets/TulaneLogo.svg")
 background-size: 20%
 background-position: 95% 95%
+count:false
 
 # Data
 
@@ -201,41 +231,238 @@ background-position: 95% 95%
 - ### NLSD is a census of all schools in the US
 
   - Includes all private, charter, and traditional public schools from 1990-2019
+  - Developed by Co-I Harris
 
-- ### We will supplement the NLSD with data about voucher participation, discrimination law (e.g., don't say gay), and political leaning of the state
+- ### We will supplement the NLSD with data about voucher participation, discrimination law (e.g., anti-trans / anti-CRT / anti-DEI), and other socio-economic and demographic data of the state
 
-- ### We will also supplement NLSD with MDR Education’s contact data
+- ### We will also supplement NLSD with data on school point of contact, from MDR Education dataset
+
+---
+## Summary Statistics from the NLSD
+
+```{r, eval=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
+# Read data
+NLSD <- read_csv(file.path(datasets,"NLSD_2019_2020.csv")) 
+
+# Calculate school type counts
+school_type_counts <- NLSD |>
+  count(school_type) |>
+  arrange(school_type)
+
+# Get total sample size
+total_n <- nrow(NLSD)
+
+# Prepare data
+variables_to_summarize <- c(
+  "p_bl", "p_hp", "p_wh", "p_am", "p_as", "p_pc", "p_tr", "p_ot",
+  "fte", "cs_mn_avg_ol",
+  "bg_med_hh_inc_2000", "bg_perc_poverty_2000"
+)
+
+NLSD <- NLSD |> 
+  select(school_type, all_of(variables_to_summarize)) |>
+  mutate(
+    school_type = as.factor(school_type),
+    # Convert proportions to percentages
+    p_bl = p_bl * 100,
+    p_hp = p_hp * 100,
+    p_wh = p_wh * 100,
+    p_am = p_am * 100,
+    p_as = p_as * 100,
+    p_pc = p_pc * 100,
+    p_tr = p_tr * 100,
+    p_ot = p_ot * 100
+  )
+
+# Modify school_type factor levels to include sample sizes
+NLSD <- NLSD |>
+  mutate(
+    school_type_with_n = case_when(
+      school_type == "Catholic" ~ paste0("Catholic\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Catholic"], big.mark = ","), ")"),
+      school_type == "Charter" ~ paste0("Charter\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Charter"], big.mark = ","), ")"),
+      school_type == "Nonsectarian" ~ paste0("Nonsectarian\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Nonsectarian"], big.mark = ","), ")"),
+      school_type == "Other religious" ~ paste0("Other Religious\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Other religious"], big.mark = ","), ")"),
+      school_type == "Public" ~ paste0("Public\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Public"], big.mark = ","), ")"),
+      TRUE ~ as.character(school_type)
+    ),
+    # Reorder factor levels: Private schools first, then Charter, then Public
+    school_type_with_n = factor(school_type_with_n, levels = c(
+      paste0("Nonsectarian\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Nonsectarian"], big.mark = ","), ")"),
+      paste0("Catholic\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Catholic"], big.mark = ","), ")"),
+      paste0("Other Religious\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Other religious"], big.mark = ","), ")"),
+      paste0("Charter\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Charter"], big.mark = ","), ")"),
+      paste0("Public\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Public"], big.mark = ","), ")")
+    ))
+  )
+
+# Create the table with corrected syntax
+datasummary(
+  (`% Black` = p_bl) +
+  (`% Hispanic` = p_hp) +
+  (`% White` = p_wh) +
+  (`% Asian` = p_as) +
+  (`FTE Teachers` = fte) +
+  (`Mean Achievement (Math & RLA)` = cs_mn_avg_ol) +
+  (`Median HH Income (1999 $)` = bg_med_hh_inc_2000) +
+  (`% in Poverty` = bg_perc_poverty_2000) ~ 
+    Mean + SD + Factor(school_type_with_n) * (Mean + SD),
+  data = NLSD,
+  fmt = function(x) {
+    # Check if it's income (large numbers)
+    if (any(x > 1000, na.rm = TRUE)) {
+      format(round(x, 0), big.mark = ",")
+    } else {
+      sprintf("%.1f", x)
+    }
+  },
+  output = "gt"
+) |>
+  # Add column spanner for Full Sample columns
+  gt::tab_spanner(
+    label = paste0("Full Sample (N = ", format(total_n, big.mark = ","), ")"),
+    columns = 2:3
+  ) |>
+  # Add spanner for Private schools
+  gt::tab_spanner(
+    label = paste0("Private (N = ", format(
+      sum(school_type_counts$n[school_type_counts$school_type %in% c("Nonsectarian", "Catholic", "Other religious")], na.rm = TRUE), 
+      big.mark = ","
+    ), ")"),
+    columns = 4:9  # Covers the 6 columns for the 3 private school types (Mean + SD for each)
+  ) |>
+  # Keep simple column labels
+  gt::cols_label(
+    Mean = "Mean",
+    SD = "SD"
+  ) |>
+  # Add table title
+  #gt::tab_header(
+  #  title = "Table 3: Summary Statistics from the National Longitudinal School Database (NLSD)"
+  #) |>
+  # Add your specific table notes
+  gt::tab_source_note(
+    source_note = "Notes: The unit of observation is the school year from the 2019-2020 school year. The sample includes schools with an average of 20 or more students. Mean achievement represents the average academic achievement of students, measured through standardized test scores in mathematics and Reading Language Arts (RLA) for grades 3 through 8. The scores are standardized using the National Assessment of Educational Progress (NAEP) to allow comparisons across states, with data pooled across school years from 2008-09 to 2017-18. Higher values indicate better academic performance relative to the national standard and is only available for public schools."
+  ) |>
+  gt::tab_source_note(
+    source_note = "Source: Authors' calculations based on the National Longitudinal School Database."
+  )
+
+```
 
 ---
 class: segue-yellow
 background-image: url("assets/TulaneLogo.svg")
 background-size: 20%
 background-position: 95% 95%
+count:false
 
 # Study Design
 
 ---
+name: design
+
 ## We will consider many dimensions
 
 .pull-left[
-- ### At least 7 types of schools
+- #### At least 7 types of schools
   
-  - Private: Catholic, Protestant, secular, and single-sex
-  - Charter: No-excuses/other, district/other authorizer
-  - Traditional public schools
+  - .font70[**Private**: Catholic, Protestant, secular, and single-sex]
+  - .font70[**Charter**: No-excuses/other, district/other authorizer]
+  - .font70[**Traditional public schools**]
 ]
 
 .pull-right[
-- ### 6 dimensions of potential discrimination
+- #### 6 dimensions of potential discrimination
 
-  - Race/ethnicity (Black, Hispanic, White, Arab)
-  - LGBTQ+ status (sexual orientation or transgender status)
-  - Disability status (ADHD, autism, no disability disclosed)
-  - Academic achievement  (high vs. low)
-  - Socioeconomic status (high, middle, low paying jobs)
+  - .font70[**Race and ethnicity** (Black, Hispanic, White, Arab) signaled through names .font50[[[Race and ethnicity signals]](#race-ethnicity-names)]]
+  - .font70[**LGBTQ+ status** (lesbian, gay, trans girls and boys, non-binary)]
+  - .font70[**Disability status** (ADHD, autism, no disability disclosed)]
+  - .font70[**Academic achievement** (high vs. low)]
+  - .font70[**Socioeconomic status** (Ph.D., MD, no mention)]
 ]
 
+- We will assign each school to either the sexual orientation and gender identity (SOGI)---high schools only---or the disability treatment arms .right[.small[[[Treatment arms info]](#treat-arms)]]
+
 ---
+name: email-template
+
+## Audit Study Email Template
+
+**From:** [MOTHER'S FIRST AND LAST NAME] (<email address>)  
+**Subject:** [EMAIL SUBJECT]
+
+**Email Body:**
+[GREETING],
+
+[RECENTLY MOVED, RESEARCHING SCHOOLS] for our {daughter/son/child}, [CHILD's FIRST NAME].  
+{She/He/They} [IS IN] [GRADE] and [HAS ACADEMIC PERFORMANCE]*.
+
+| **If assigned a disability:** | **If assigned to be LGBT:** | **Otherwise:** |
+|:-----|:-----|:-----|
+| [{She/He} is on the spectrum and will need to be taught in a separate classroom.] (50%) **OR** [{She/He} has an IEP for {her/his} ADHD.] (50%) | [She is trans] (25%) **OR** [He is trans] (17%) **OR** [They are non-binary] (18%) **OR** [She is lesbian] (20%) **OR** [He is gay] (20%)] and we are hoping to find a school that is LGBT friendly. | No additional sentence. |
+
+[APPLICATION QUESTIONS]
+
+[VALEDICTION],  
+[MOTHER'S FIRST AND LAST NAME] (50%) **OR** Dr. [" "], MD (25%) **OR** Dr. [" "], PhD (25%)
+
+.right[.small[[[SOGI treatment arm]](#sogi-treatment)] .small[[[Disability treatment arm]](#disability-treatment)] .small[[[Academic achievement, SES, and voucher info]](#academic-achievement)]]
+
+---
+name: coding-response
+
+## Coding response data
+
+- ### Primary outcome: positive response
+
+  - It will be coded as 1 if the school responds to our email in a way that is helpful (e.g., answers a question) or encouraging within two weeks and 0 otherwise
+
+- ### Secondary outcome: Features of (un)helpful and discriminatory responses through qualitative thematic coding and large language models (LLMs) 
+
+- ### Going beyond most audit studies which usually only consider response rates
+
+.right[.small[[[School communication]](#communication-schools)] .small[[[Emailing strategy]](#emailing-strategy)] .small[[[Regression models]](#regression-models)]]
+
+---
+class: tulane-blue
+background-image: url(assets/TulaneLogo-white.svg)
+background-size: 260px
+background-position: 5% 95%
+count:false
+
+# Thank you!
+
+.pull-right[.pull-down[
+
+<a href="mailto:hhadah@tulane.edu">
+.white[`r icons::fontawesome("paper-plane")` hhadah@tulane.edu]
+</a>
+
+<a href="https://hussainhadah.com/">
+.white[`r icons::fontawesome("link")` https://hussainhadah.com/]
+</a>
+
+<a href="https://github.com/hhadah">
+.white[`r icons::fontawesome("github")` @hhadah]
+</a>
+
+<br><br><br>
+
+]]
+
+---
+class: segue-yellow
+background-image: url("assets/TulaneLogo.svg")
+background-size: 20%
+background-position: 95% 95%
+count:false
+
+# Appendix
+
+---
+name: treat-arms
+count: false
+
 ## Assigning treatment arms
 
 - ### We will assign each school to either the sexual orientation and gender identity treatment arms (65%) or the disability treatment arm (35%)
@@ -245,7 +472,12 @@ background-position: 95% 95%
   - We want to avoid signaling too many uncommon characteristics in the same email
   - We also want to avoid signals that could complicate the interpretation of the results
 
+.right[.small[[[Back]](#design)]]
+
 ---
+name: race-ethnicity-names
+count: false
+
 ## We will use names to signal race and ethnicity
 
 - ### The names have been tested by Gaddis (2022; White, African American, and Hispanic names) and Baert, Lippens & Van Borm (2022; Arab) 
@@ -256,7 +488,13 @@ background-position: 95% 95%
 
   - Emails assigned to the SOGI treatment: probabilities 40% White, 30% Black, and 30% Hispanic
 
+.right[.small[[[Back]](#design)]]
+
+
 ---
+name: sogi-treatment
+count: false
+
 ## Signaling sexual orientation or gender identity
 
 - ### We will only use high school for this treatment arm
@@ -266,7 +504,12 @@ background-position: 95% 95%
   - "[He/She/They] [is/are] [gay/lesbian/trans], and we are hoping to find a school that is [supportive / LGBT friendly]" 
   - Mirroring language used in Pfaff et al. (2021) of religious beliefs
 
+.right[.small[[[Back]](#email-template)]]
+
 ---
+name: disability-treatment
+count: false
+
 ## Signaling disability status
 
 - ### For schools assigned to the disability treatment arm we will randomly assign the child to have:
@@ -279,7 +522,12 @@ background-position: 95% 95%
   - "[She/he] has an IEP for [her/his] ADHD"
   - "[She/he] is on the spectrum and will need to be taught in a separate classroom"
 
+.right[.small[[[Back]](#email-template)]]
+
 ---
+name: academic-achievement
+count: false
+
 ## Signaling academic achievement, socioeconomic status (SES), and voucher
 
 - ### We will signal academic achievement by mentioning that the child:
@@ -291,22 +539,12 @@ background-position: 95% 95%
 
 - ### For schools that accept vouchers, we will include signals of voucher eligibility 
 
----
-## Coding response data
-
-- ### Primary outcome: positive response
-
-  - It will be coded as 1 if the school responds to our email in a way that is helpful (e.g., answers a question) or encouraging within two weeks and 0 otherwise
-
-- ### Secondary outcome: response quality which includes:
-
-  - Wait time to the response
-  - Reply is helpful
-  - Affirming
-  - Polite
-
+.right[.small[[[Back]](#email-template)]]
 
 ---
+name: communication-schools
+count: false
+
 ## Communication with the Schools 
 
 - There is an extensive literature on how to write the emails to the schools (Patrick is the expert)
@@ -322,7 +560,12 @@ background-position: 95% 95%
 
   - We will use some of Doug's extensive contacts with educators to ensure the emails are realistic
 
+.right[.small[[[Back]](#coding-response)]]
+
 ---
+name: emailing-strategy
+count: false
+
 ## Emailing Strategy
 
 - ### We will send two emails to each school
@@ -333,19 +576,13 @@ background-position: 95% 95%
 
 - ### Sending two emails substantially increases statistical power
 
---
-- ### This is the place where we in most need of suggestions
-
+.right[.small[[[Back]](#coding-response)]]
 
 ---
-class: segue-yellow
-background-image: url("assets/TulaneLogo.svg")
-background-size: 20%
-background-position: 95% 95%
+name: regression-models
+count: false
 
-# Statistical Analysis
 
----
 ## Short regression model
 
 We will estimate a linear probability model (LPM) called the "short" model (following Muralidharan, Romero & Wüthrich, 2019):
@@ -365,7 +602,12 @@ Where $i$ indexes each email:
 - $Disability_i$ is an indicator variable for students with ADHD or autism
 - $FemmeName_i$ is an indicator variable for a feminine name
 
+.right[.small[[[Back]](#coding-response)]]
+
 ---
+name: regression-models-continued
+count: false
+
 ## Short regression model (continued)
 
 $$
@@ -382,31 +624,7 @@ Where $i$ indexes each email and $s$ indexes each school:
 - $EmailControls_i$ includes indicator variables for different randomized email features,  and controls for email timing
 - $SchoolControls_s$ which includes state fixed effects and school characteristics from the NLSD
 
----
-class: tulane-blue
-background-image: url(assets/TulaneLogo-white.svg)
-background-size: 260px
-background-position: 5% 95%
-
-# Thanks!
-
-.pull-right[.pull-down[
-
-<a href="mailto:hhadah@tulane.edu">
-.white[`r icons::fontawesome("paper-plane")` hhadah@tulane.edu]
-</a>
-
-<a href="https://hussainhadah.com/">
-.white[`r icons::fontawesome("link")` https://hussainhadah.com/]
-</a>
-
-<a href="https://github.com/hhadah">
-.white[`r icons::fontawesome("github")` @hhadah]
-</a>
-
-<br><br><br>
-
-]]
+.right[.small[[[Back]](#coding-response)]]
 
 
 ```{r gen_pdf, include = FALSE, cache = FALSE, eval = TRUE}
