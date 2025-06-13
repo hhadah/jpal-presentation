@@ -151,36 +151,34 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2"
 ```
 ## School Choice Programs are Expanding Rapidly
 
-- #### Education is strongly linked to economic mobility and non-economic benefits .tiny[.gray[*(Chetty et al., 2014, 2016)*]]
+- #### Education is strongly linked to economic mobility and non-economic benefits .tiny[.gray[**(Chetty et al., 2014, 2016)**]]
 
-- #### Minoritized groups face significant barriers .tiny[.gray[*(e.g., Bergman & McFarlin, 2020)*]]
+- #### Minoritized groups, especially Black, Hispanic, and immigrant families, face educational disparities .tiny[.gray[**(e.g., Bergman & McFarlin, 2020; Hadah, 2025)**]]
 
 - #### While public and charter schools are available to all, there are still inequalities through:
 
-  - .font70[Resource and teacher quality imbalances .tiny[.gray[*(Ferguson, 1991, Johnson, 2019; Soss et al., 2012)*]]]
-  - .font70[Larger class sizes .tiny[.gray[(Boozer & Rouse, 2001)]]]
+  - .font70[Resource and teacher quality imbalances .tiny[.gray[**(Ferguson, 1991, Johnson, 2019; Sass et al., 2012)**]]]
+  - .font70[Larger class sizes and course placement .tiny[.gray[**(Boozer & Rouse, 2001; Francis, De Oliveira, & Dimmitt, 2019)**]]]
 
 --
 - #### Then there are private schools
 
   - .font70[Less affirming of minoritized groups and less accessible]
-  - .font70[They can legally discriminate on any basis except race .tiny[.gray[*(Petrilli, 2017)*]]]
+  - .font70[They can legally discriminate on any basis except race .tiny[.gray[**(Petrilli, 2017)**]]]
 
 ---
 ## American education is undergoing one of its most significant shifts in the last half-century 
 
-- #### 8 states have universal voucher .gray[.tiny[*(EdChoice, 2024)*]]
-
-- #### Some argue that this would expand educational opportunities for low-income families
-
-- #### Some research calls this into question .gray[.tiny[*(Harris, 2018a, forthcoming)*]]
-
 - #### Milton Friedman (1955) popularized vouchers in the wake of Brown v. Board of Education
 
   - .font60[He tried to sell it knowing that southern states would use it to continue segregation]
-  - .font60[Recent evidence affirms this interpretation .tiny[.gray[*(DeAngelis et al., 2019)*]]]
+  - .font60[Recent evidence affirms this interpretation .tiny[.gray[**(DeAngelis et al., 2019)**]]]
+
+- #### 8 states have universal vouchers .gray[.tiny[**(EdChoice, 2025)**]]
 
 - #### Voucher expansion aligns with broader discriminatory policy trends (e.g., anti-DEI, anti-CRT, etc.)
+
+- #### Some argue that this would expand educational opportunities for low-income families, the more rigorous and relevant research calls this into question
 
 --
 - #### .brand-crawfest[To what extent do these programs discriminate against students is an open question]
@@ -193,11 +191,11 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2"
 
 - We will randomize several characteristics of the students to test for discrimination
 
-  - .brand-crawfest[*Race and Ethnicity:*] Black, Hispanic, White, Arab
-  - .brand-crawfest[*LGBTQ+ Status:*] gay/lesbian vs. presumed straight and transgender vs. presumed cis
-  - *Disability Status:* ADHD, autism, no disability disclosed
-  - *Academic achievement:* High vs low
-  - *Socioeconomic Status (SES)/Income:* Ph.D. vs. MD vs. no mention
+  - .brand-crawfest[**Race and Ethnicity]:** Black, Hispanic, White, Arab
+  - .brand-crawfest[**LGBTQ+ Status]:** gay/lesbian vs. presumed straight and transgender vs. presumed cis
+  - .brand-crawfest[**Disability Status]:** ADHD, autism, no disability disclosed
+  - **Academic achievement:** High vs low
+  - **Socioeconomic Status (SES)/Income:** Ph.D. vs. MD vs. no mention
 
 ---
 ## We contribute to the literature in several ways
@@ -205,15 +203,14 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2"
 - ##### We will be the first audit study to test for discrimination in access to education in .brand-crawfest[public], .brand-crawfest[charter], and .brand-crawfest[private] schools
   - .font70[No previous audit studies included private schools]
 
-- ##### First study to test for a wide range of characteristics
-  - .font70[LGBTQ+ and Arab]
+- ##### First to test for discrimination against .brand-crawfest[LGBTQ+] and .brand-crawfest[Arab] people in access to education
 
 - ##### We will also test how some policies will influence discrimination
   - .font70[DEI/CRT bans and LGBTQIA+ policies]
 
 - ##### Determining where discrimination occurs and informing policy to counteract it
   - .font70[Testing mechanisms (e.g., statistical discrimination, implicit bias)  ]
-  - .font70[Spatial/school-level charachteristics , such as district characteristics, segregation, and social views]
+  - .font70[Spatial/school-level characteristics , such as district characteristics, segregation, and social views]
 
 
 ---
@@ -395,18 +392,20 @@ name: email-template
 [GREETING],
 
 [RECENTLY MOVED, RESEARCHING SCHOOLS] for our {daughter/son/child}, [CHILD's FIRST NAME].  
-{She/He/They} [IS IN] [GRADE] and [HAS ACADEMIC PERFORMANCE]*.
+{She/He/They} [IS IN] [GRADE] and [HAS ACADEMIC PERFORMANCE (Excluded for disability treatment arm)].
 
 | **If assigned a disability:** | **If assigned to be LGBT:** | **Otherwise:** |
 |:-----|:-----|:-----|
-| [{She/He} is on the spectrum and will need to be taught in a separate classroom.] (50%) **OR** [{She/He} has an IEP for {her/his} ADHD.] (50%) | [She is trans] (25%) **OR** [He is trans] (17%) **OR** [They are non-binary] (18%) **OR** [She is lesbian] (20%) **OR** [He is gay] (20%)] and we are hoping to find a school that is LGBT friendly. | No additional sentence. |
+| [{She/He} is on the spectrum and will need to be taught in a separate classroom.] (50%) **OR** [{She/He} has an IEP for {her/his} ADHD.] (50%) | [She is trans] (25%) **OR** [He is trans] (17%) **OR** [They are non-binary] (18%) **OR** [She is lesbian] (20%) **OR** [He is gay] (20%) and we are hoping to find a school that is LGBT friendly. | No additional sentence. |
 
 [APPLICATION QUESTIONS]
 
 [VALEDICTION],  
 [MOTHER'S FIRST AND LAST NAME] (50%) **OR** Dr. [" "], MD (25%) **OR** Dr. [" "], PhD (25%)
 
-.right[.small[[[SOGI treatment arm]](#sogi-treatment)] .small[[[Disability treatment arm]](#disability-treatment)] .small[[[Academic achievement, SES, and voucher info]](#academic-achievement)]]
+<div style="text-align: right; padding-right: 25px;">
+<span class="font60"><a href="#sogi-treatment" style="text-decoration: none;">[SOGI treatment arm]</a></span> <span class="font60"><a href="#disability-treatment" style="text-decoration: none;">[Disability treatment arm]</a></span> <span class="font60"><a href="#academic-achievement" style="text-decoration: none;">[Academic achievement, SES, and voucher info]</a></span>
+</div>
 
 ---
 name: coding-response
@@ -417,11 +416,15 @@ name: coding-response
 
   - It will be coded as 1 if the school responds to our email in a way that is helpful (e.g., answers a question) or encouraging within two weeks and 0 otherwise
 
-- ### Secondary outcome: Features of (un)helpful and discriminatory responses through qualitative thematic coding and large language models (LLMs) 
+- ### Secondary outcome: Features of (un)helpful and discriminatory responses through qualitative thematic coding and large language models (LLMs) .font50[.gray[**(e.g., Skeen and Button, 2024)**]]
+
+  - .font70[Analysis will correct for post-treatment bias .tiny[.gray[**(Coppock, 2019)**]]]
 
 - ### Going beyond most audit studies which usually only consider response rates
 
-.right[.small[[[School communication]](#communication-schools)] .small[[[Emailing strategy]](#emailing-strategy)] .small[[[Regression models]](#regression-models)]]
+<div style="text-align: right; padding-right: 25px; font-size: 0.7em;">
+<span><a href="#communication-schools" style="text-decoration: none;">[School communication]</a></span> <span><a href="#emailing-strategy" style="text-decoration: none;">[Emailing strategy]</a></span> <span><a href="#regression-models" style="text-decoration: none;">[Regression models]</a></span>
+</div>
 
 ---
 class: tulane-blue
