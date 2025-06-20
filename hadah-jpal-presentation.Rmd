@@ -8,7 +8,6 @@ author: |
   <sup>1</sup>Economics Department, Tulane University, <sup>2</sup>The Murphy Institute
   </div>
 
-
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
@@ -68,7 +67,15 @@ opts_chunk$set(
 ```{r, cache=FALSE, message=FALSE, warning=FALSE, include=TRUE, eval=TRUE, results=FALSE, echo=FALSE, tidy.opts = list(width.cutoff = 50), tidy = TRUE}
 ## Load and install the packages that we'll be using today
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tictoc, parallel, pbapply, future, future.apply, furrr, RhpcBLASctl, memoise, here, foreign, mfx, tidyverse, hrbrthemes, estimatr, ivreg, fixest, sandwich, lmtest, margins, vtable, broom, modelsummary, stargazer, fastDummies, recipes, dummy, gplots, haven, huxtable, kableExtra, gmodels, survey, gtsummary, data.table, tidyfast, dtplyr, microbenchmark, ggpubr, tibble, viridis, wesanderson, censReg, rstatix, srvyr, formatR, sysfonts, showtextdb, showtext, thematic, sampleSelection, RefManageR, DT, googleVis)
+pacman::p_load(tictoc, parallel, pbapply, future, future.apply, 
+furrr, RhpcBLASctl, memoise, here, foreign, mfx, tidyverse, 
+hrbrthemes, estimatr, ivreg, fixest, sandwich, lmtest, margins, 
+vtable, broom, modelsummary, stargazer, fastDummies, recipes, 
+dummy, gplots, haven, huxtable, kableExtra, gmodels, survey, 
+gtsummary, data.table, tidyfast, dtplyr, microbenchmark, ggpubr, 
+tibble, viridis, wesanderson, censReg, rstatix, srvyr, formatR, 
+sysfonts, showtextdb, showtext, thematic, sampleSelection, 
+RefManageR, DT, googleVis, png)
 # devtools::install_github("thomasp85/patchwork")
 remotes::install_github("mitchelloharawild/icons")
 remotes::install_github("ROpenSci/bibtex")
@@ -223,6 +230,8 @@ count:false
 # Data
 
 ---
+name: data-sec
+
 ## National Longitudinal School Database (NLSD)
 
 - ### NLSD is a census of all schools in the US
@@ -234,117 +243,7 @@ count:false
 
 - ### We will also supplement NLSD with data on school point of contact, from MDR Education dataset
 
----
-## Summary Statistics from the NLSD
-
-```{r, eval=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
-# Read data
-NLSD <- read_csv(file.path(datasets,"NLSD_2019_2020.csv")) 
-
-# Calculate school type counts
-school_type_counts <- NLSD |>
-  count(school_type) |>
-  arrange(school_type)
-
-# Get total sample size
-total_n <- nrow(NLSD)
-
-# Prepare data
-variables_to_summarize <- c(
-  "p_bl", "p_hp", "p_wh", "p_am", "p_as", "p_pc", "p_tr", "p_ot",
-  "fte", "cs_mn_avg_ol",
-  "bg_med_hh_inc_2000", "bg_perc_poverty_2000"
-)
-
-NLSD <- NLSD |> 
-  select(school_type, all_of(variables_to_summarize)) |>
-  mutate(
-    school_type = as.factor(school_type),
-    # Convert proportions to percentages
-    p_bl = p_bl * 100,
-    p_hp = p_hp * 100,
-    p_wh = p_wh * 100,
-    p_am = p_am * 100,
-    p_as = p_as * 100,
-    p_pc = p_pc * 100,
-    p_tr = p_tr * 100,
-    p_ot = p_ot * 100
-  )
-
-# Modify school_type factor levels to include sample sizes
-NLSD <- NLSD |>
-  mutate(
-    school_type_with_n = case_when(
-      school_type == "Catholic" ~ paste0("Catholic\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Catholic"], big.mark = ","), ")"),
-      school_type == "Charter" ~ paste0("Charter\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Charter"], big.mark = ","), ")"),
-      school_type == "Nonsectarian" ~ paste0("Nonsectarian\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Nonsectarian"], big.mark = ","), ")"),
-      school_type == "Other religious" ~ paste0("Other Religious\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Other religious"], big.mark = ","), ")"),
-      school_type == "Public" ~ paste0("Public\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Public"], big.mark = ","), ")"),
-      TRUE ~ as.character(school_type)
-    ),
-    # Reorder factor levels: Private schools first, then Charter, then Public
-    school_type_with_n = factor(school_type_with_n, levels = c(
-      paste0("Nonsectarian\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Nonsectarian"], big.mark = ","), ")"),
-      paste0("Catholic\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Catholic"], big.mark = ","), ")"),
-      paste0("Other Religious\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Other religious"], big.mark = ","), ")"),
-      paste0("Charter\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Charter"], big.mark = ","), ")"),
-      paste0("Public\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Public"], big.mark = ","), ")")
-    ))
-  )
-
-# Create the table with corrected syntax
-datasummary(
-  (`% Black` = p_bl) +
-  (`% Hispanic` = p_hp) +
-  (`% White` = p_wh) +
-  (`% Asian` = p_as) +
-  (`FTE Teachers` = fte) +
-  (`Mean Achievement (Math & RLA)` = cs_mn_avg_ol) +
-  (`Median HH Income (1999 $)` = bg_med_hh_inc_2000) +
-  (`% in Poverty` = bg_perc_poverty_2000) ~ 
-    Mean + SD + Factor(school_type_with_n) * (Mean + SD),
-  data = NLSD,
-  fmt = function(x) {
-    # Check if it's income (large numbers)
-    if (any(x > 1000, na.rm = TRUE)) {
-      format(round(x, 0), big.mark = ",")
-    } else {
-      sprintf("%.1f", x)
-    }
-  },
-  output = "gt"
-) |>
-  # Add column spanner for Full Sample columns
-  gt::tab_spanner(
-    label = paste0("Full Sample (N = ", format(total_n, big.mark = ","), ")"),
-    columns = 2:3
-  ) |>
-  # Add spanner for Private schools
-  gt::tab_spanner(
-    label = paste0("Private (N = ", format(
-      sum(school_type_counts$n[school_type_counts$school_type %in% c("Nonsectarian", "Catholic", "Other religious")], na.rm = TRUE), 
-      big.mark = ","
-    ), ")"),
-    columns = 4:9  # Covers the 6 columns for the 3 private school types (Mean + SD for each)
-  ) |>
-  # Keep simple column labels
-  gt::cols_label(
-    Mean = "Mean",
-    SD = "SD"
-  ) |>
-  # Add table title
-  #gt::tab_header(
-  #  title = "Table 3: Summary Statistics from the National Longitudinal School Database (NLSD)"
-  #) |>
-  # Add your specific table notes
-  gt::tab_source_note(
-    source_note = "Notes: The unit of observation is the school year from the 2019-2020 school year. The sample includes schools with an average of 20 or more students. Mean achievement represents the average academic achievement of students, measured through standardized test scores in mathematics and Reading Language Arts (RLA) for grades 3 through 8. The scores are standardized using the National Assessment of Educational Progress (NAEP) to allow comparisons across states, with data pooled across school years from 2008-09 to 2017-18. Higher values indicate better academic performance relative to the national standard and is only available for public schools."
-  ) |>
-  gt::tab_source_note(
-    source_note = "Source: Authors' calculations based on the National Longitudinal School Database."
-  )
-
-```
+.right[.small[[[Summary Statistics]](#sum-tab)]]
 
 ---
 class: segue-yellow
@@ -406,6 +305,32 @@ name: email-template
 <div style="text-align: right; padding-right: 25px;">
 <span class="font60"><a href="#sogi-treatment" style="text-decoration: none;">[SOGI treatment arm]</a></span> <span class="font60"><a href="#disability-treatment" style="text-decoration: none;">[Disability treatment arm]</a></span> <span class="font60"><a href="#academic-achievement" style="text-decoration: none;">[Academic achievement, SES, and voucher info]</a></span>
 </div>
+
+---
+## Actual emails
+
+.pull-left[
+```{r example1, echo=FALSE, warning=FALSE, out.width="120%", fig.show='hold', fig.align='right'}
+# Read the image file
+img <- readPNG("assets/email-1.png")
+
+# Plot the image
+grid.raster(img)
+```
+
+]
+
+.pull-right[
+```{r example2, echo=FALSE, warning=FALSE, out.width="120%", fig.show='hold', fig.align='right'}
+# Read the image file
+img2 <- readPNG("assets/email-2.png")
+
+# Plot the image
+grid.raster(img2)
+```
+
+]
+
 
 ---
 name: coding-response
@@ -629,6 +554,121 @@ Where $i$ indexes each email and $s$ indexes each school:
 
 .right[.small[[[Back]](#coding-response)]]
 
+---
+name: sum-tab
+count: false
+
+## Summary Statistics from the NLSD .small[[[Back]](#data-sec)]
+
+
+```{r, eval=TRUE, warning=FALSE, message=FALSE, echo=FALSE}
+# Read data
+NLSD <- read_csv(file.path(datasets,"NLSD_2019_2020.csv")) 
+
+# Calculate school type counts
+school_type_counts <- NLSD |>
+  count(school_type) |>
+  arrange(school_type)
+
+# Get total sample size
+total_n <- nrow(NLSD)
+
+# Prepare data
+variables_to_summarize <- c(
+  "p_bl", "p_hp", "p_wh", "p_am", "p_as", "p_pc", "p_tr", "p_ot",
+  "fte", "cs_mn_avg_ol",
+  "bg_med_hh_inc_2000", "bg_perc_poverty_2000"
+)
+
+NLSD <- NLSD |> 
+  select(school_type, all_of(variables_to_summarize)) |>
+  mutate(
+    school_type = as.factor(school_type),
+    # Convert proportions to percentages
+    p_bl = p_bl * 100,
+    p_hp = p_hp * 100,
+    p_wh = p_wh * 100,
+    p_am = p_am * 100,
+    p_as = p_as * 100,
+    p_pc = p_pc * 100,
+    p_tr = p_tr * 100,
+    p_ot = p_ot * 100
+  )
+
+# Modify school_type factor levels to include sample sizes
+NLSD <- NLSD |>
+  mutate(
+    school_type_with_n = case_when(
+      school_type == "Catholic" ~ paste0("Catholic\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Catholic"], big.mark = ","), ")"),
+      school_type == "Charter" ~ paste0("Charter\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Charter"], big.mark = ","), ")"),
+      school_type == "Nonsectarian" ~ paste0("Nonsectarian\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Nonsectarian"], big.mark = ","), ")"),
+      school_type == "Other religious" ~ paste0("Other Religious\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Other religious"], big.mark = ","), ")"),
+      school_type == "Public" ~ paste0("Public\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Public"], big.mark = ","), ")"),
+      TRUE ~ as.character(school_type)
+    ),
+    # Reorder factor levels: Private schools first, then Charter, then Public
+    school_type_with_n = factor(school_type_with_n, levels = c(
+      paste0("Nonsectarian\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Nonsectarian"], big.mark = ","), ")"),
+      paste0("Catholic\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Catholic"], big.mark = ","), ")"),
+      paste0("Other Religious\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Other religious"], big.mark = ","), ")"),
+      paste0("Charter\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Charter"], big.mark = ","), ")"),
+      paste0("Public\n(N = ", format(school_type_counts$n[school_type_counts$school_type == "Public"], big.mark = ","), ")")
+    ))
+  )
+
+# Create the table with corrected syntax
+datasummary(
+  (`% Black` = p_bl) +
+  (`% Hispanic` = p_hp) +
+  (`% White` = p_wh) +
+  (`% Asian` = p_as) +
+  (`FTE Teachers` = fte) +
+  (`Mean Achievement (Math & RLA)` = cs_mn_avg_ol) +
+  (`Median HH Income (1999 $)` = bg_med_hh_inc_2000) +
+  (`% in Poverty` = bg_perc_poverty_2000) ~ 
+    Mean + SD + Factor(school_type_with_n) * (Mean + SD),
+  data = NLSD,
+  fmt = function(x) {
+    # Check if it's income (large numbers)
+    if (any(x > 1000, na.rm = TRUE)) {
+      format(round(x, 0), big.mark = ",")
+    } else {
+      sprintf("%.1f", x)
+    }
+  },
+  output = "gt"
+) |>
+  # Add column spanner for Full Sample columns
+  gt::tab_spanner(
+    label = paste0("Full Sample (N = ", format(total_n, big.mark = ","), ")"),
+    columns = 2:3
+  ) |>
+  # Add spanner for Private schools
+  gt::tab_spanner(
+    label = paste0("Private (N = ", format(
+      sum(school_type_counts$n[school_type_counts$school_type %in% c("Nonsectarian", "Catholic", "Other religious")], na.rm = TRUE), 
+      big.mark = ","
+    ), ")"),
+    columns = 4:9  # Covers the 6 columns for the 3 private school types (Mean + SD for each)
+  ) |>
+  # Keep simple column labels
+  gt::cols_label(
+    Mean = "Mean",
+    SD = "SD"
+  ) |>
+  # Add table title
+  #gt::tab_header(
+  #  title = "Table 3: Summary Statistics from the National Longitudinal School Database (NLSD)"
+  #) |>
+  # Add your specific table notes
+  gt::tab_source_note(
+    source_note = "Notes: The unit of observation is the school year from the 2019-2020 school year. The sample includes schools with an average of 20 or more students. Mean achievement represents the average academic achievement of students, measured through standardized test scores in mathematics and Reading Language Arts (RLA) for grades 3 through 8. The scores are standardized using the National Assessment of Educational Progress (NAEP) to allow comparisons across states, with data pooled across school years from 2008-09 to 2017-18. Higher values indicate better academic performance relative to the national standard and is only available for public schools."
+  ) |>
+  gt::tab_source_note(
+    source_note = "Source: Authors' calculations based on the National Longitudinal School Database."
+  )
+
+```
 
 ```{r gen_pdf, include = FALSE, cache = FALSE, eval = TRUE}
 library(renderthis)

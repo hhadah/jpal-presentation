@@ -3,7 +3,7 @@
   <head>
     <title>Parent’s Choice or School’s Choice? Discrimination Against Students in Admission to Private, Charter, and Traditional Public Schools</title>
     <meta charset="utf-8" />
-    <meta name="date" content="2025-06-13" />
+    <meta name="date" content="2025-06-19" />
     <script src="hadah-jpal-presentation_files/header-attrs/header-attrs.js"></script>
     <link href="hadah-jpal-presentation_files/remark-css/default.css" rel="stylesheet" />
     <script type="text/x-mathjax-config">
@@ -36,15 +36,15 @@ class: center, middle, inverse, title-slide
 </div>
 ]
 .date[
-### 13 June 2025
+### 19 June 2025
 ]
 
 ---
 
 layout: true
-&lt;div style="position: absolute;left:20px;bottom:5px;color:black;font-size: 12px;"&gt;Hussain Hadah (Tulane/Murphy Institute) | Parent’s Choice or School’s Choice?  | 13 June 2025&lt;/div&gt;
+&lt;div style="position: absolute;left:20px;bottom:5px;color:black;font-size: 12px;"&gt;Hussain Hadah (Tulane/Murphy Institute) | Parent’s Choice or School’s Choice?  | 19 June 2025&lt;/div&gt;
 
-&lt;!---  | 13 June 2025--&gt;
+&lt;!---  | 19 June 2025--&gt;
 
 ---
 
@@ -96,7 +96,7 @@ layout: true
   - .font60[He tried to sell it knowing that southern states would use it to continue segregation]
   - .font60[Recent evidence affirms this interpretation .tiny[.gray[**(DeAngelis et al., 2019)**]]]
 
-- #### 8 states have universal vouchers .gray[.tiny[**(EdChoice, 2024)**]]
+- #### 8 states have universal vouchers .gray[.tiny[**(EdChoice, 2025)**]]
 
 - #### Voucher expansion aligns with broader discriminatory policy trends (e.g., anti-DEI, anti-CRT, etc.)
 
@@ -125,7 +125,7 @@ layout: true
 - ##### We will be the first audit study to test for discrimination in access to education in .brand-crawfest[public], .brand-crawfest[charter], and .brand-crawfest[private] schools
   - .font70[No previous audit studies included private schools]
 
-- ##### First to test for discrimination against LGBTQ+ and Arab people in access to education
+- ##### First to test for discrimination against .brand-crawfest[LGBTQ+] and .brand-crawfest[Arab] people in access to education
 
 - ##### We will also test how some policies will influence discrimination
   - .font70[DEI/CRT bans and LGBTQIA+ policies]
@@ -145,6 +145,8 @@ count:false
 # Data
 
 ---
+name: data-sec
+
 ## National Longitudinal School Database (NLSD)
 
 - ### NLSD is a census of all schools in the US
@@ -156,625 +158,7 @@ count:false
 
 - ### We will also supplement NLSD with data on school point of contact, from MDR Education dataset
 
----
-## Summary Statistics from the NLSD
-
-<div id="kcnucfvdbs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kcnucfvdbs table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#kcnucfvdbs thead, #kcnucfvdbs tbody, #kcnucfvdbs tfoot, #kcnucfvdbs tr, #kcnucfvdbs td, #kcnucfvdbs th {
-  border-style: none;
-}
-
-#kcnucfvdbs p {
-  margin: 0;
-  padding: 0;
-}
-
-#kcnucfvdbs .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#kcnucfvdbs .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#kcnucfvdbs .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#kcnucfvdbs .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#kcnucfvdbs .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#kcnucfvdbs .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#kcnucfvdbs .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#kcnucfvdbs .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#kcnucfvdbs .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#kcnucfvdbs .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#kcnucfvdbs .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#kcnucfvdbs .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#kcnucfvdbs .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#kcnucfvdbs .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#kcnucfvdbs .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kcnucfvdbs .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#kcnucfvdbs .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#kcnucfvdbs .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#kcnucfvdbs .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kcnucfvdbs .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#kcnucfvdbs .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kcnucfvdbs .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#kcnucfvdbs .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kcnucfvdbs .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#kcnucfvdbs .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#kcnucfvdbs .gt_left {
-  text-align: left;
-}
-
-#kcnucfvdbs .gt_center {
-  text-align: center;
-}
-
-#kcnucfvdbs .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#kcnucfvdbs .gt_font_normal {
-  font-weight: normal;
-}
-
-#kcnucfvdbs .gt_font_bold {
-  font-weight: bold;
-}
-
-#kcnucfvdbs .gt_font_italic {
-  font-style: italic;
-}
-
-#kcnucfvdbs .gt_super {
-  font-size: 65%;
-}
-
-#kcnucfvdbs .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#kcnucfvdbs .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#kcnucfvdbs .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#kcnucfvdbs .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#kcnucfvdbs .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#kcnucfvdbs .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#kcnucfvdbs .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#kcnucfvdbs .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#kcnucfvdbs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_col_headings gt_spanner_row">
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id></th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="6" scope="colgroup" id="Private (N = 23,900)">
-        <span class="gt_column_spanner">Private (N = 23,900)</span>
-      </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup" id></th>
-    </tr>
-    <tr class="gt_col_headings gt_spanner_row">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id=" "> </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Full Sample (N = 123,106)">
-        <span class="gt_column_spanner">Full Sample (N = 123,106)</span>
-      </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Nonsectarian&#10;(N = 3,971)    ">
-        <span class="gt_column_spanner">Nonsectarian
-(N = 3,971)    </span>
-      </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Catholic&#10;(N = 6,983)    ">
-        <span class="gt_column_spanner">Catholic
-(N = 6,983)    </span>
-      </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Other Religious&#10;(N = 12,946)    ">
-        <span class="gt_column_spanner">Other Religious
-(N = 12,946)    </span>
-      </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Charter&#10;(N = 7,719)    ">
-        <span class="gt_column_spanner">Charter
-(N = 7,719)    </span>
-      </th>
-      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Public&#10;(N = 91,487)    ">
-        <span class="gt_column_spanner">Public
-(N = 91,487)    </span>
-      </th>
-    </tr>
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD">SD</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean ">Mean </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD ">SD </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean  ">Mean  </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD  ">SD  </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean   ">Mean   </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD   ">SD   </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean    ">Mean    </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD    ">SD    </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean     ">Mean     </th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD     ">SD     </th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers=" " class="gt_row gt_left">% Black</td>
-<td headers="Mean" class="gt_row gt_right">14.1</td>
-<td headers="SD" class="gt_row gt_right">22.8</td>
-<td headers="Mean " class="gt_row gt_right">13.2</td>
-<td headers="SD " class="gt_row gt_right">22.0</td>
-<td headers="Mean  " class="gt_row gt_right">8.7</td>
-<td headers="SD  " class="gt_row gt_right">18.1</td>
-<td headers="Mean   " class="gt_row gt_right">12.5</td>
-<td headers="SD   " class="gt_row gt_right">24.1</td>
-<td headers="Mean    " class="gt_row gt_right">26.2</td>
-<td headers="SD    " class="gt_row gt_right">32.0</td>
-<td headers="Mean     " class="gt_row gt_right">13.7</td>
-<td headers="SD     " class="gt_row gt_right">21.7</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">% Hispanic</td>
-<td headers="Mean" class="gt_row gt_right">22.5</td>
-<td headers="SD" class="gt_row gt_right">26.4</td>
-<td headers="Mean " class="gt_row gt_right">11.5</td>
-<td headers="SD " class="gt_row gt_right">20.1</td>
-<td headers="Mean  " class="gt_row gt_right">18.1</td>
-<td headers="SD  " class="gt_row gt_right">24.5</td>
-<td headers="Mean   " class="gt_row gt_right">8.9</td>
-<td headers="SD   " class="gt_row gt_right">16.9</td>
-<td headers="Mean    " class="gt_row gt_right">33.9</td>
-<td headers="SD    " class="gt_row gt_right">30.9</td>
-<td headers="Mean     " class="gt_row gt_right">23.8</td>
-<td headers="SD     " class="gt_row gt_right">26.5</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">% White</td>
-<td headers="Mean" class="gt_row gt_right">52.9</td>
-<td headers="SD" class="gt_row gt_right">33.4</td>
-<td headers="Mean " class="gt_row gt_right">58.3</td>
-<td headers="SD " class="gt_row gt_right">30.1</td>
-<td headers="Mean  " class="gt_row gt_right">62.2</td>
-<td headers="SD  " class="gt_row gt_right">32.1</td>
-<td headers="Mean   " class="gt_row gt_right">70.0</td>
-<td headers="SD   " class="gt_row gt_right">33.0</td>
-<td headers="Mean    " class="gt_row gt_right">30.9</td>
-<td headers="SD    " class="gt_row gt_right">30.8</td>
-<td headers="Mean     " class="gt_row gt_right">52.0</td>
-<td headers="SD     " class="gt_row gt_right">32.6</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">% Asian</td>
-<td headers="Mean" class="gt_row gt_right">4.1</td>
-<td headers="SD" class="gt_row gt_right">9.1</td>
-<td headers="Mean " class="gt_row gt_right">9.4</td>
-<td headers="SD " class="gt_row gt_right">15.4</td>
-<td headers="Mean  " class="gt_row gt_right">4.8</td>
-<td headers="SD  " class="gt_row gt_right">8.3</td>
-<td headers="Mean   " class="gt_row gt_right">4.2</td>
-<td headers="SD   " class="gt_row gt_right">11.1</td>
-<td headers="Mean    " class="gt_row gt_right">3.3</td>
-<td headers="SD    " class="gt_row gt_right">8.1</td>
-<td headers="Mean     " class="gt_row gt_right">4.0</td>
-<td headers="SD     " class="gt_row gt_right">8.6</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">FTE Teachers</td>
-<td headers="Mean" class="gt_row gt_right">31.5</td>
-<td headers="SD" class="gt_row gt_right">26.7</td>
-<td headers="Mean " class="gt_row gt_right">28.8</td>
-<td headers="SD " class="gt_row gt_right">36.2</td>
-<td headers="Mean  " class="gt_row gt_right">21.5</td>
-<td headers="SD  " class="gt_row gt_right">18.6</td>
-<td headers="Mean   " class="gt_row gt_right">16.1</td>
-<td headers="SD   " class="gt_row gt_right">23.1</td>
-<td headers="Mean    " class="gt_row gt_right">26.6</td>
-<td headers="SD    " class="gt_row gt_right">28.3</td>
-<td headers="Mean     " class="gt_row gt_right">34.5</td>
-<td headers="SD     " class="gt_row gt_right">26.2</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">Mean Achievement (Math &amp; RLA)</td>
-<td headers="Mean" class="gt_row gt_right">-0.0</td>
-<td headers="SD" class="gt_row gt_right">0.4</td>
-<td headers="Mean " class="gt_row gt_right"></td>
-<td headers="SD " class="gt_row gt_right"></td>
-<td headers="Mean  " class="gt_row gt_right"></td>
-<td headers="SD  " class="gt_row gt_right"></td>
-<td headers="Mean   " class="gt_row gt_right"></td>
-<td headers="SD   " class="gt_row gt_right"></td>
-<td headers="Mean    " class="gt_row gt_right">-0.1</td>
-<td headers="SD    " class="gt_row gt_right">0.5</td>
-<td headers="Mean     " class="gt_row gt_right">-0.0</td>
-<td headers="SD     " class="gt_row gt_right">0.4</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">Median HH Income (1999 $)</td>
-<td headers="Mean" class="gt_row gt_right">44,728</td>
-<td headers="SD" class="gt_row gt_right">23,155</td>
-<td headers="Mean " class="gt_row gt_right">60,958</td>
-<td headers="SD " class="gt_row gt_right">37,355</td>
-<td headers="Mean  " class="gt_row gt_right">47,952</td>
-<td headers="SD  " class="gt_row gt_right">26,527</td>
-<td headers="Mean   " class="gt_row gt_right">45,647</td>
-<td headers="SD   " class="gt_row gt_right">22,758</td>
-<td headers="Mean    " class="gt_row gt_right">37,390</td>
-<td headers="SD    " class="gt_row gt_right">18,458</td>
-<td headers="Mean     " class="gt_row gt_right">44,456</td>
-<td headers="SD     " class="gt_row gt_right">22,333</td></tr>
-    <tr><td headers=" " class="gt_row gt_left">% in Poverty</td>
-<td headers="Mean" class="gt_row gt_right">7.0</td>
-<td headers="SD" class="gt_row gt_right">8.0</td>
-<td headers="Mean " class="gt_row gt_right">4.7</td>
-<td headers="SD " class="gt_row gt_right">6.3</td>
-<td headers="Mean  " class="gt_row gt_right">5.5</td>
-<td headers="SD  " class="gt_row gt_right">7.2</td>
-<td headers="Mean   " class="gt_row gt_right">6.5</td>
-<td headers="SD   " class="gt_row gt_right">7.3</td>
-<td headers="Mean    " class="gt_row gt_right">10.4</td>
-<td headers="SD    " class="gt_row gt_right">10.2</td>
-<td headers="Mean     " class="gt_row gt_right">7.0</td>
-<td headers="SD     " class="gt_row gt_right">7.8</td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="13">Notes: The unit of observation is the school year from the 2019-2020 school year. The sample includes schools with an average of 20 or more students. Mean achievement represents the average academic achievement of students, measured through standardized test scores in mathematics and Reading Language Arts (RLA) for grades 3 through 8. The scores are standardized using the National Assessment of Educational Progress (NAEP) to allow comparisons across states, with data pooled across school years from 2008-09 to 2017-18. Higher values indicate better academic performance relative to the national standard and is only available for public schools.</td>
-    </tr>
-    <tr>
-      <td class="gt_sourcenote" colspan="13">Source: Authors' calculations based on the National Longitudinal School Database.</td>
-    </tr>
-  </tfoot>
-  
-</table>
-</div>
+.right[.small[[[Summary Statistics]](#sum-tab)]]
 
 ---
 class: segue-yellow
@@ -836,6 +220,20 @@ name: email-template
 &lt;div style="text-align: right; padding-right: 25px;"&gt;
 &lt;span class="font60"&gt;&lt;a href="#sogi-treatment" style="text-decoration: none;"&gt;[SOGI treatment arm]&lt;/a&gt;&lt;/span&gt; &lt;span class="font60"&gt;&lt;a href="#disability-treatment" style="text-decoration: none;"&gt;[Disability treatment arm]&lt;/a&gt;&lt;/span&gt; &lt;span class="font60"&gt;&lt;a href="#academic-achievement" style="text-decoration: none;"&gt;[Academic achievement, SES, and voucher info]&lt;/a&gt;&lt;/span&gt;
 &lt;/div&gt;
+
+---
+## Actual emails
+
+.pull-left[
+&lt;img src="hadah-jpal-presentation_files/figure-html/example1-1.png" width="120%" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+]
+
+.pull-right[
+&lt;img src="hadah-jpal-presentation_files/figure-html/example2-1.png" width="120%" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+]
+
 
 ---
 name: coding-response
@@ -1059,6 +457,629 @@ Where `\(i\)` indexes each email and `\(s\)` indexes each school:
 
 .right[.small[[[Back]](#coding-response)]]
 
+---
+name: sum-tab
+count: false
+
+## Summary Statistics from the NLSD .small[[[Back]](#data-sec)]
+
+
+<div id="pddfisucqk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pddfisucqk table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pddfisucqk thead, #pddfisucqk tbody, #pddfisucqk tfoot, #pddfisucqk tr, #pddfisucqk td, #pddfisucqk th {
+  border-style: none;
+}
+
+#pddfisucqk p {
+  margin: 0;
+  padding: 0;
+}
+
+#pddfisucqk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pddfisucqk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pddfisucqk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pddfisucqk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pddfisucqk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pddfisucqk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pddfisucqk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pddfisucqk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pddfisucqk .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pddfisucqk .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pddfisucqk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pddfisucqk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pddfisucqk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pddfisucqk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pddfisucqk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pddfisucqk .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pddfisucqk .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pddfisucqk .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pddfisucqk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pddfisucqk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pddfisucqk .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pddfisucqk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pddfisucqk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pddfisucqk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pddfisucqk .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pddfisucqk .gt_left {
+  text-align: left;
+}
+
+#pddfisucqk .gt_center {
+  text-align: center;
+}
+
+#pddfisucqk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pddfisucqk .gt_font_normal {
+  font-weight: normal;
+}
+
+#pddfisucqk .gt_font_bold {
+  font-weight: bold;
+}
+
+#pddfisucqk .gt_font_italic {
+  font-style: italic;
+}
+
+#pddfisucqk .gt_super {
+  font-size: 65%;
+}
+
+#pddfisucqk .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pddfisucqk .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pddfisucqk .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pddfisucqk .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pddfisucqk .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pddfisucqk .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pddfisucqk .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pddfisucqk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pddfisucqk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings gt_spanner_row">
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup"></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="6" scope="colgroup" id="Private (N = 23,900)">
+        <div class="gt_column_spanner">Private (N = 23,900)</div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="4" scope="colgroup"></th>
+    </tr>
+    <tr class="gt_col_headings gt_spanner_row">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id="a-"> </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Full Sample (N = 123,106)">
+        <div class="gt_column_spanner">Full Sample (N = 123,106)</div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Nonsectarian&#10;(N = 3,971)    ">
+        <div class="gt_column_spanner">Nonsectarian
+(N = 3,971)    </div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Catholic&#10;(N = 6,983)    ">
+        <div class="gt_column_spanner">Catholic
+(N = 6,983)    </div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Other Religious&#10;(N = 12,946)    ">
+        <div class="gt_column_spanner">Other Religious
+(N = 12,946)    </div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Charter&#10;(N = 7,719)    ">
+        <div class="gt_column_spanner">Charter
+(N = 7,719)    </div>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="Public&#10;(N = 91,487)    ">
+        <div class="gt_column_spanner">Public
+(N = 91,487)    </div>
+      </th>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD">SD</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean-">Mean </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD-">SD </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean-">Mean  </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD-">SD  </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean-">Mean   </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD-">SD   </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean-">Mean    </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD-">SD    </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean-">Mean     </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SD-">SD     </th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">% Black</td>
+<td headers="Mean" class="gt_row gt_right">14.1</td>
+<td headers="SD" class="gt_row gt_right">22.8</td>
+<td headers="Mean " class="gt_row gt_right">13.2</td>
+<td headers="SD " class="gt_row gt_right">22.0</td>
+<td headers="Mean  " class="gt_row gt_right">8.7</td>
+<td headers="SD  " class="gt_row gt_right">18.1</td>
+<td headers="Mean   " class="gt_row gt_right">12.5</td>
+<td headers="SD   " class="gt_row gt_right">24.1</td>
+<td headers="Mean    " class="gt_row gt_right">26.2</td>
+<td headers="SD    " class="gt_row gt_right">32.0</td>
+<td headers="Mean     " class="gt_row gt_right">13.7</td>
+<td headers="SD     " class="gt_row gt_right">21.7</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">% Hispanic</td>
+<td headers="Mean" class="gt_row gt_right">22.5</td>
+<td headers="SD" class="gt_row gt_right">26.4</td>
+<td headers="Mean " class="gt_row gt_right">11.5</td>
+<td headers="SD " class="gt_row gt_right">20.1</td>
+<td headers="Mean  " class="gt_row gt_right">18.1</td>
+<td headers="SD  " class="gt_row gt_right">24.5</td>
+<td headers="Mean   " class="gt_row gt_right">8.9</td>
+<td headers="SD   " class="gt_row gt_right">16.9</td>
+<td headers="Mean    " class="gt_row gt_right">33.9</td>
+<td headers="SD    " class="gt_row gt_right">30.9</td>
+<td headers="Mean     " class="gt_row gt_right">23.8</td>
+<td headers="SD     " class="gt_row gt_right">26.5</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">% White</td>
+<td headers="Mean" class="gt_row gt_right">52.9</td>
+<td headers="SD" class="gt_row gt_right">33.4</td>
+<td headers="Mean " class="gt_row gt_right">58.3</td>
+<td headers="SD " class="gt_row gt_right">30.1</td>
+<td headers="Mean  " class="gt_row gt_right">62.2</td>
+<td headers="SD  " class="gt_row gt_right">32.1</td>
+<td headers="Mean   " class="gt_row gt_right">70.0</td>
+<td headers="SD   " class="gt_row gt_right">33.0</td>
+<td headers="Mean    " class="gt_row gt_right">30.9</td>
+<td headers="SD    " class="gt_row gt_right">30.8</td>
+<td headers="Mean     " class="gt_row gt_right">52.0</td>
+<td headers="SD     " class="gt_row gt_right">32.6</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">% Asian</td>
+<td headers="Mean" class="gt_row gt_right">4.1</td>
+<td headers="SD" class="gt_row gt_right">9.1</td>
+<td headers="Mean " class="gt_row gt_right">9.4</td>
+<td headers="SD " class="gt_row gt_right">15.4</td>
+<td headers="Mean  " class="gt_row gt_right">4.8</td>
+<td headers="SD  " class="gt_row gt_right">8.3</td>
+<td headers="Mean   " class="gt_row gt_right">4.2</td>
+<td headers="SD   " class="gt_row gt_right">11.1</td>
+<td headers="Mean    " class="gt_row gt_right">3.3</td>
+<td headers="SD    " class="gt_row gt_right">8.1</td>
+<td headers="Mean     " class="gt_row gt_right">4.0</td>
+<td headers="SD     " class="gt_row gt_right">8.6</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">FTE Teachers</td>
+<td headers="Mean" class="gt_row gt_right">31.5</td>
+<td headers="SD" class="gt_row gt_right">26.7</td>
+<td headers="Mean " class="gt_row gt_right">28.8</td>
+<td headers="SD " class="gt_row gt_right">36.2</td>
+<td headers="Mean  " class="gt_row gt_right">21.5</td>
+<td headers="SD  " class="gt_row gt_right">18.6</td>
+<td headers="Mean   " class="gt_row gt_right">16.1</td>
+<td headers="SD   " class="gt_row gt_right">23.1</td>
+<td headers="Mean    " class="gt_row gt_right">26.6</td>
+<td headers="SD    " class="gt_row gt_right">28.3</td>
+<td headers="Mean     " class="gt_row gt_right">34.5</td>
+<td headers="SD     " class="gt_row gt_right">26.2</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Mean Achievement (Math &amp; RLA)</td>
+<td headers="Mean" class="gt_row gt_right">-0.0</td>
+<td headers="SD" class="gt_row gt_right">0.4</td>
+<td headers="Mean " class="gt_row gt_right"></td>
+<td headers="SD " class="gt_row gt_right"></td>
+<td headers="Mean  " class="gt_row gt_right"></td>
+<td headers="SD  " class="gt_row gt_right"></td>
+<td headers="Mean   " class="gt_row gt_right"></td>
+<td headers="SD   " class="gt_row gt_right"></td>
+<td headers="Mean    " class="gt_row gt_right">-0.1</td>
+<td headers="SD    " class="gt_row gt_right">0.5</td>
+<td headers="Mean     " class="gt_row gt_right">-0.0</td>
+<td headers="SD     " class="gt_row gt_right">0.4</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Median HH Income (1999 $)</td>
+<td headers="Mean" class="gt_row gt_right">44,728</td>
+<td headers="SD" class="gt_row gt_right">23,155</td>
+<td headers="Mean " class="gt_row gt_right">60,958</td>
+<td headers="SD " class="gt_row gt_right">37,355</td>
+<td headers="Mean  " class="gt_row gt_right">47,952</td>
+<td headers="SD  " class="gt_row gt_right">26,527</td>
+<td headers="Mean   " class="gt_row gt_right">45,647</td>
+<td headers="SD   " class="gt_row gt_right">22,758</td>
+<td headers="Mean    " class="gt_row gt_right">37,390</td>
+<td headers="SD    " class="gt_row gt_right">18,458</td>
+<td headers="Mean     " class="gt_row gt_right">44,456</td>
+<td headers="SD     " class="gt_row gt_right">22,333</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">% in Poverty</td>
+<td headers="Mean" class="gt_row gt_right">7.0</td>
+<td headers="SD" class="gt_row gt_right">8.0</td>
+<td headers="Mean " class="gt_row gt_right">4.7</td>
+<td headers="SD " class="gt_row gt_right">6.3</td>
+<td headers="Mean  " class="gt_row gt_right">5.5</td>
+<td headers="SD  " class="gt_row gt_right">7.2</td>
+<td headers="Mean   " class="gt_row gt_right">6.5</td>
+<td headers="SD   " class="gt_row gt_right">7.3</td>
+<td headers="Mean    " class="gt_row gt_right">10.4</td>
+<td headers="SD    " class="gt_row gt_right">10.2</td>
+<td headers="Mean     " class="gt_row gt_right">7.0</td>
+<td headers="SD     " class="gt_row gt_right">7.8</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="13">Notes: The unit of observation is the school year from the 2019-2020 school year. The sample includes schools with an average of 20 or more students. Mean achievement represents the average academic achievement of students, measured through standardized test scores in mathematics and Reading Language Arts (RLA) for grades 3 through 8. The scores are standardized using the National Assessment of Educational Progress (NAEP) to allow comparisons across states, with data pooled across school years from 2008-09 to 2017-18. Higher values indicate better academic performance relative to the national standard and is only available for public schools.</td>
+    </tr>
+    <tr>
+      <td class="gt_sourcenote" colspan="13">Source: Authors' calculations based on the National Longitudinal School Database.</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
 
 
     </textarea>
@@ -1067,13 +1088,13 @@ Where `\(i\)` indexes each email and `\(s\)` indexes each school:
 <script src="assets/remark-zoom.js"></script>
 <script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9",
-"navigation": {
-"scroll": false
-}
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "navigation": {
+    "scroll": false
+  }
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
