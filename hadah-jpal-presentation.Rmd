@@ -360,6 +360,23 @@ count:false
 
 # Thank you!
 
+.pull-left[
+
+##### Please let us know if you have any comments about the project
+
+```{r qr-code, echo=FALSE, warning=FALSE, out.width="60%", fig.show='hold', fig.align='left'}
+library(qrcode)
+
+# Generate QR code SVG with transparent background
+qr_code("https://forms.gle/r9vF1FcRGjhZ69gd8") |>
+  generate_svg("assets/qrcode-slides.svg", background = "transparent", show = FALSE)
+
+# Embed it
+knitr::include_graphics("assets/qrcode-slides.svg")
+
+```
+
+]  
 .pull-right[.pull-down[
 
 <a href="mailto:hhadah@tulane.edu">
