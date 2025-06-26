@@ -75,7 +75,7 @@ dummy, gplots, haven, huxtable, kableExtra, gmodels, survey,
 gtsummary, data.table, tidyfast, dtplyr, microbenchmark, ggpubr, 
 tibble, viridis, wesanderson, censReg, rstatix, srvyr, formatR, 
 sysfonts, showtextdb, showtext, thematic, sampleSelection, 
-RefManageR, DT, googleVis, png)
+RefManageR, DT, googleVis, png, renderthis)
 # devtools::install_github("thomasp85/patchwork")
 remotes::install_github("mitchelloharawild/icons")
 remotes::install_github("ROpenSci/bibtex")
